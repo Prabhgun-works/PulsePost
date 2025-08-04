@@ -6,6 +6,7 @@ import Signup from '../pages/Signup';
 import Feed from '../pages/Feed';
 import AddPostForm from '../pages/AddPost'
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ export default function AppRoutes() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/add" element={<AddPostForm />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

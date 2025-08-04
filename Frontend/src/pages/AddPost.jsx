@@ -61,8 +61,7 @@ data.append('urgency', form.urgency);
       <h2>Post a Blood Request</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <Input label="Patient Name" name="name" value={form.name} onChange={handleChange} placeholder="Full Name" />
-        <Input label="Blood Type" name="bloodType" value={form.bloodType} onChange={handleChange} placeholder="O+, AB-, etc" />
-        <Input label="Location" name="location" value={form.location} onChange={handleChange} placeholder="City, State" />
+        <Input label="Location" name="location" value={form.location} onChange={handleChange} placeholder="City" />
         <Input label="Issue Description" name="issue" value={form.issue} onChange={handleChange} placeholder="Medical emergency details" />
 
         {/* 📸 Image upload */}
@@ -77,13 +76,28 @@ data.append('urgency', form.urgency);
           <input type="file" name="document" accept=".pdf,.doc,.docx" onChange={handleFileChange} />
         </div>
 
-        {/* 🚨 Serious checkbox */}
+      
+        <div className='Dropdown'>
+          <label  name="bloodType" value={form.bloodType} onChange={handleChange} placeholder="O+, AB-, etc">Blood Type</label>
+          <select>
+          <option>O+</option>
+          <option>AB-</option>
+          <option>AB+</option>
+          <option>O-</option>
+          <option>B+</option>
+          <option>A+</option>
+          <option>A-</option>
+          </select>
+
+        </div>
         <div className="checkbox-field">
           <label>
             <input type="checkbox" name="serious" checked={form.serious} onChange={handleChange} />
             Mark as serious/emergency
           </label>
         </div>
+   
+       
 
         <Button type="submit">Submit Request</Button>
       </form>

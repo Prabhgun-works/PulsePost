@@ -1,32 +1,35 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
-const authRoutes = require('./routes/authRoutes');
-const postRoutes = require('./routes/postRoutes');
-const logger = require('./middleware/logger');
-
+const fs = require('fs');
+const path = require('path');
 const app = express();
-const PORT = 5000;
+const port = 3000;
 
-// 🛡️ GLOBAL CORS FIX
-app.use(cors({
-  origin: '*', // 🔥 Allow ALL origins — use carefully in prod
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: false // ✅ Set to true ONLY if you're using cookies
-}));
-
-app.use(bodyParser.json());
-app.use(logger);
+// Middleware
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
-app.use('/api/posts', postRoutes);
+// ✅ Serve static images
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
+// Routes
+const postRoutes = require('./routes/postRoutes');
+const authRoutes = require('./routes/authRoutes');
+
+app.use('/posts', postRoutes);
+app.use('/auth', authRoutes);
+
+// Root
 app.get('/', (req, res) => {
-  res.send('🩸 BloodConnect API is live');
+  res.json("home page");
 });
 
-app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+// Logging
+app.use((req, res, next) => {
+  console.log(`🛬 ${req.method} ${req.url}`);
+  next();
+});
+
+app.listen(port, () => {
+  console.log(`🚀 Server running at http://localhost:${port}`);
 });

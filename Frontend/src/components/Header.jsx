@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <header className="app-header">
-      <Link to="/" className="logo">BloodConnect</Link>
+      <Link to="/" className="logo">🫀BloodConnect</Link>
 
       <nav>
         <Link to="/">Feed</Link>

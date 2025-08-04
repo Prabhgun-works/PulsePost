@@ -12,7 +12,7 @@ export default function Signup() {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/signup', {
+      const res = await fetch('http://localhost:3000/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -26,12 +26,24 @@ export default function Signup() {
       });
 
       const data = await res.json();
-      console.log('✅ Signup success:', data);
-      alert('Signup successful!');
+      if(data.message!="Signup successful")
+      {
+        console.error('❌ Signup failed:', data.message);
+        alert('Signup failed: '+ data.message);
+      }
+      else
+      {
+        console.log(' Signup success:', data);
+        alert('Signup successful!');
+        window.location.href = '/add'; // or your specific home page route
+
+
+      }
     } catch (err) {
       console.error('❌ Signup failed:', err);
       alert('Signup failed. Check console.');
     }
+
   }
 
   return (

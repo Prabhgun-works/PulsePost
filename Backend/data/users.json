@@ -1,0 +1,37 @@
+[
+  {
+    "name": "abc",
+    "email": "a@b.com",
+    "password": "1234"
+  },
+  {
+    "name": "abc1",
+    "email": "a1@b1.com",
+    "password": "1234"
+  },
+  {
+    "name": "abc",
+    "email": "de@abc.omm",
+    "password": "12345"
+  },
+  {
+    "name": "Vani Jain ",
+    "email": "Vanijain@1982",
+    "password": "12345"
+  },
+  {
+    "name": "vanijain",
+    "email": "vani@b.com",
+    "password": "123456"
+  },
+  {
+    "name": "vani",
+    "email": "v@b",
+    "password": "123"
+  },
+  {
+    "name": "bani",
+    "email": "b@124",
+    "password": "12345"
+  }
+]
