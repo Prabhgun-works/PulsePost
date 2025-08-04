@@ -12,6 +12,7 @@ export default function AppRoutes() {
   return (
     <Router>
       <Header />
+      <Feed/>
       <Routes>
         <Route path="/" element={<Feed />} />
         <Route path="/login" element={<Login />} />
